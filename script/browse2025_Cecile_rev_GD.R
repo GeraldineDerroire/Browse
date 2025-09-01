@@ -758,7 +758,13 @@ bxp +labs(title="data Rens", subtitle = "Wilcox tests p<0001")
 
 
 ################################################EFFET TYPE de PLACETTE#############################################################"
+# all of that is section 1
 
+# GD rajouter ça si on charge les jeux de données déja pretes
+# Emplacement<-data.frame(unique(browse_fin$Emplacement))
+# colnames(Emplacement)<-"Emplacement"
+# Emplacement$type<-substr(Emplacement$Emplacement,1,2)
+# Emplacement$nbplant<-unique(browse_fin$Nbr_plantules_emplcmt)
 
 ## nb plantules ~placette   plus en CH p<0.01  287.2 vs 194.7  p= 0.01
 
@@ -796,6 +802,7 @@ bxp +labs(title="Hauteur plantules", subtitle = get_test_label(stat.test,detaile
 
 
 ## BROUTE ~placette
+# section 3.1
 
 broute_pla<-table(browse_fin$Brtot,browse_fin$Type_placette)
 broute_pla
@@ -852,7 +859,7 @@ shapiro.test(browse_fin_net$moyenne_Dur) #p<0.001 non normal
 hist(browse_fin_net$moyenne_Dur) 
 
 stat.test<-browse_fin_net %>% wilcox_test(moyenne_Dur~Type_placette)
-stat.testp ## p=0.0035
+stat.test ## p=0.0035
 
 bxp <- ggboxplot(
   data=na.omit(browse_fin_net[,c("Type_placette","moyenne_Dur")]), x = "Type_placette", y = "moyenne_Dur",
